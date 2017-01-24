@@ -14,6 +14,10 @@ describe Product, "validations" do
   it { should validate_numericality_of(:store_quantity) }
 end
 
+describe Product, "associations" do
+  it { should have_many :sales }
+end
+
 describe Product, ".dollar_price" do
   it "returns the price in dollars of a product" do
     product = create :product

@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   validates_numericality_of :warehouse_quantity
   validates_numericality_of :store_quantity
 
+  has_many :sales
+
   def dollar_price
     unit_price / 100.0
   end
