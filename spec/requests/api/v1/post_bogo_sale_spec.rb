@@ -5,7 +5,7 @@ describe "POST /bogosales", type: :request do
     it "returns the product with bogo sales status" do
       original_product = create :product, unit_price: 10000
 
-      post "/api/v1/bogosales", { product: original_product.id }
+      post "/api/v1/bogo", { product: original_product.id }
       product = JSON.parse(response.body)
 
       expect(response).to be_success
