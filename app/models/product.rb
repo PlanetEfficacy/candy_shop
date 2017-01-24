@@ -15,5 +15,9 @@ class Product < ApplicationRecord
     def sort_by_price
       order(unit_price: :desc, name: :asc)
     end
+
+    def sort_by_warehouse
+      order(warehouse_quantity: :desc, name: :asc)
+    end
   end
 end
