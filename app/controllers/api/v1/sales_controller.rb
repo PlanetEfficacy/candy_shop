@@ -1,6 +1,8 @@
 class Api::V1::SalesController < ApplicationController
   def create
-    Product.find(params[:product]).sales.new(sale_params)
+    product = Product.find(params[:product])
+    product.sales.create(sale_params)
+    render json: product
   end
 
   private

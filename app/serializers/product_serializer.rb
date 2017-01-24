@@ -7,7 +7,7 @@ class ProductSerializer < ActiveModel::Serializer
               :expiration
 
   def price
-    "#{'%.2f' % object.dollar_price}"
+    "#{'%.2f' % object.sale_price}"
   end
 
   def expiration
