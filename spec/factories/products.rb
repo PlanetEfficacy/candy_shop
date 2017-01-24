@@ -5,5 +5,12 @@ FactoryGirl.define do
     warehouse_quantity 1000
     store_quantity 100
     expiration Date.parse(Time.now.to_s)
+
+
+    factory :product_with_sale do
+      after(:create) do |product_with_sale, _ |
+        create :sale, product: product_with_sale
+      end
+    end
   end
 end

@@ -5,7 +5,7 @@ describe "POST /sales", type: :request do
     xit "returns the product with sale price as json" do
       original_product = create :product, unit_price: 10000
 
-      post "/api/v1/sale", { product: original_product.id, discount: 50 }
+      post "/api/v1/sales", { product: original_product.id, discount: 50 }
       product = JSON.parse(response.body)
 
       expect(response).to be_success
