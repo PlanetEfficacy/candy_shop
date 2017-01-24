@@ -13,7 +13,7 @@ class Product < ApplicationRecord
 
   class << self
     def sort_by_price
-      binding.pry
+      order(unit_price: :desc, name: :asc)
     end
   end
 end
