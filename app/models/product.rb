@@ -10,4 +10,10 @@ class Product < ApplicationRecord
   def dollar_price
     unit_price / 100.0
   end
+
+  class << self
+    def sort_by_price
+      binding.pry
+    end
+  end
 end
