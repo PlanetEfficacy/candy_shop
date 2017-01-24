@@ -92,3 +92,9 @@ describe Product, ".bogo_sale" do
     expect(product_with_bogo_sale.bogo_sale).to eq(true)
   end
 end
+
+describe Product, ".sell_by_date" do
+  it "returns the date 2 weeks before the expiration date" do
+    product = create :product, expiration: 
+  end
+end
