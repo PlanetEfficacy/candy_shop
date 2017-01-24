@@ -95,7 +95,7 @@ end
 
 describe Product, ".sell_by_date" do
   it "returns the date 2 weeks before the expiration date" do
-    product = create :product
-    binding.pry
+    product = create :product, expiration: DateTime.new(2017, 1, 24)
+    expect(product.sell_by_date).to eq(DateTime.new(2017, 1, 10))
   end
 end
