@@ -95,6 +95,7 @@ end
 
 describe Product, ".sell_by_date" do
   it "returns the date 2 weeks before the expiration date" do
-    product = create :product, expiration: 
+    product = create :product
+    binding.pry
   end
 end
