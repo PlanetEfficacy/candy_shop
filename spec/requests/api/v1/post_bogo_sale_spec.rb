@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "POST /bogosales", type: :request do
   context "with product in body" do
-    xit "returns the product with bogo sales status" do
+    it "returns the product with bogo sales status" do
       original_product = create :product, unit_price: 10000
 
       post "/api/v1/bogo", { product: original_product.id }
@@ -12,7 +12,7 @@ describe "POST /bogosales", type: :request do
       expect(product).to be_instance_of(Hash)
       expect(product['id']).to eq(original_product.id)
       expect(product['price']).to eq('100.00')
-      expect(product['bogo_sale']).to eq('true')
+      expect(product['bogo_sale']).to eq(true)
     end
   end
 end

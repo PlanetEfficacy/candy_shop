@@ -4,7 +4,8 @@ class ProductSerializer < ActiveModel::Serializer
               :price,
               :warehouse_quantity,
               :store_quantity,
-              :expiration
+              :expiration,
+              :bogo_sale
 
   def price
     "#{'%.2f' % object.sale_price}"
