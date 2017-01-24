@@ -99,3 +99,16 @@ describe Product, ".sell_by_date" do
     expect(product.sell_by_date).to eq(DateTime.new(2017, 1, 10))
   end
 end
+
+describe Product, ".unexpired" do
+  it "returns all the products whose sell by date has not passed" do
+    expired_product = create :product, expiration: DateTime.new(2017, 1, 24)
+    expiration = Time.now() + 60 * 60 * 24 * 15
+    unexpired_product = create(:product, expiration: expiration)
+    inedible_product = create(:product, expiration: nil)
+
+    expect(Product.unexpired.count).to eq(2)
+    expect(Product.unexpired.first).to eq(unexpired_product)
+    expect(Product.unexpired.last).to eq(inedible_product)
+  end
+end
