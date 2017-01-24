@@ -6,7 +6,7 @@ require 'rails_helper'
 # Candies™ stores. It would also be nice to be able to sort
 # by those attributes as well.
 describe "GET /products", type: :request do
-  xit "returns price, quantity of all products" do
+  it "returns price, quantity of all products" do
     create_list :product, 2
 
     get "/products"
@@ -15,6 +15,10 @@ describe "GET /products", type: :request do
     expect(response).to be_success
     expect(products).to be_instance_of(Array)
     expect(products.count).to eq(2)
-    expect(products.first[:price]).to eq(1000)
+    expect(products.first['name']).to eq("Chocolate Bar")
+    expect(products.first['price']).to eq("$1.00")
+    expect(products.first['warehouse_quantity']).to eq(1000)
+    expect(products.first['store_quantity']).to eq(100)
+    expect(products.first['expiration']).to eq(Product.first.expiration.to_s)
   end
 end
