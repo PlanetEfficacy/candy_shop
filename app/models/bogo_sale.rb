@@ -1,0 +1,2 @@
+class BogoSale < ApplicationRecord
+end
