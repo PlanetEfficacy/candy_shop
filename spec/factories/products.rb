@@ -12,5 +12,11 @@ FactoryGirl.define do
         create :sale, product: product_with_sale
       end
     end
+
+    factory :product_with_bogo_sale do
+      after(:create) do |product_with_bogo_sale, _ |
+        create :bogo_sale, product: product_with_bogo_sale
+      end
+    end
   end
 end

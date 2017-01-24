@@ -83,3 +83,12 @@ describe Product, ".sale_price" do
     expect(product.sale_price).to eq(product.dollar_price)
   end
 end
+
+describe Product, ".bogo_sale" do
+  it "returns true if there is an active bogo sale, otherwise returns false" do
+    product = create :product
+    product_with_bogo_sale = create :product_with_bogo_sale
+    expect(product.bogo_sale).to eq(false)
+    expect(product_with_bogo_sale.bogo_sale).to eq(true)
+  end
+end
