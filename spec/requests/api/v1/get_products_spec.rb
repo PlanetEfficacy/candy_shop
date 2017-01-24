@@ -9,7 +9,7 @@ describe "GET /products", type: :request do
   it "returns price, quantity of all products" do
     create_list :product, 2
 
-    get "/products"
+    get "/api/v1/products"
     products = JSON.parse(response.body)
 
     expect(response).to be_success
