@@ -3,7 +3,17 @@ class Api::V1::ProductsController < ApplicationController
     render json: sort_requested? ? order_products : Product.all
   end
 
+  def update
+    product = Product.find(params[:id])
+    product.update(product_params)
+    render json: product
+  end
+
   private
+    def product_params
+      params.permit(:warehouse_quantity, :store_quantity)
+    end
+
     def order_products
       return Product.sort_by_price if sort_by_price?
       return Product.sort_by_warehouse if sort_by_warehouse?
