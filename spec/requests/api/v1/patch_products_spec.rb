@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "PATCH /products/:id", type: :request do
+describe "PATCH /api/v1/products/:id", type: :request do
   context "with update warehouse body" do
     it "returns the updated product as json" do
       original_product = create :product, warehouse_quantity: 1

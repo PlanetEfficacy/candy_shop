@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "GET /products", type: :request do
+describe "GET /api/v1/products", type: :request do
   it "returns price, quantity of all products" do
     create_list :product, 2
 
