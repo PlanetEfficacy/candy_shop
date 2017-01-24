@@ -18,6 +18,10 @@ class Product < ApplicationRecord
     no_active_sale? ? dollar_price : dollar_price * total_discount
   end
 
+  def bogo_sale
+    !bogo_sales.where('status=?', 1).empty?
+  end
+
   class << self
     def sort_by_price
       order(unit_price: :desc, name: :asc)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "POST /bogosales", type: :request do
   context "with product in body" do
-    it "returns the product with bogo sales status" do
+    xit "returns the product with bogo sales status" do
       original_product = create :product, unit_price: 10000
 
       post "/api/v1/bogo", { product: original_product.id }
