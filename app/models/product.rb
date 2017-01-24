@@ -22,6 +22,10 @@ class Product < ApplicationRecord
     !bogo_sales.where('status=?', 1).empty?
   end
 
+  def sell_by_date
+    expiration - two_weeks
+  end
+
   class << self
     def sort_by_price
       order(unit_price: :desc, name: :asc)
@@ -44,5 +48,9 @@ class Product < ApplicationRecord
 
     def no_active_sale?
       total_discount == 0.0
+    end
+
+    def two_weeks
+      14 * 24 * 60 * 60
     end
 end
