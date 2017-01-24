@@ -13,6 +13,10 @@ class Product < ApplicationRecord
     unit_price / 100.0
   end
 
+  def sale_price
+    dollar_price * total_discount
+  end
+
   class << self
     def sort_by_price
       order(unit_price: :desc, name: :asc)
@@ -26,4 +30,10 @@ class Product < ApplicationRecord
       order(store_quantity: :desc, name: :asc)
     end
   end
+
+  private
+
+    def total_discount
+      sales.where('status=?', 1).sum(:discount) / 100.0
+    end
 end

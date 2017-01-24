@@ -72,15 +72,13 @@ end
 
 describe Product, ".sale_price" do
   it "returns price based on all active sales" do
-    product_1 = create :product, store_quantity: 1
-    product_2 = create :product, store_quantity: 2
-    product_3 = create :product, store_quantity: 3, name: "A"
-    product_4 = create :product, store_quantity: 3, name: "B"
+    product = create :product_with_sale
+    product.sales.create(discount: 10, status: 0)
+    expect(product.sale_price).to eq(0.50)
+  end
 
-    expect(Product.sort_by_store.count).to eq(4)
-    expect(Product.sort_by_store.first).to eq(product_3)
-    expect(Product.sort_by_store.second).to eq(product_4)
-    expect(Product.sort_by_store.third).to eq(product_2)
-    expect(Product.sort_by_store.last).to eq(product_1)
+  it "returns false if there are no active sales" do
+    product = create :product_with_sale
+    expect(product.sale_price).to eq(0.50)
   end
 end
