@@ -16,6 +16,7 @@ end
 
 describe Product, "associations" do
   it { should have_many :sales }
+  it { should have_many :bogo_sales }
 end
 
 describe Product, ".dollar_price" do

@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   validates_numericality_of :store_quantity
 
   has_many :sales
+  has_many :bogo_sales
 
   def dollar_price
     unit_price / 100.0
