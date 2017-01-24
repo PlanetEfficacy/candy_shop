@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe Product, "validations" do
   it "has a valid factory" do
     expect(build(:product)).to be_valid
@@ -11,4 +12,11 @@ describe Product, "validations" do
   it { should validate_numericality_of(:unit_price) }
   it { should validate_numericality_of(:warehouse_quantity) }
   it { should validate_numericality_of(:store_quantity) }
+end
+
+describe Product, ".dollar_price" do
+  it "returns the price in dollars of a product" do
+    product = create :product
+    expect(product.dollar_price).to eq(1.00)
+  end
 end
