@@ -61,4 +61,23 @@ describe "GET /products", type: :request do
       expect(products.last['id']).to eq(product_1.id)
     end
   end
+
+  context "request contains paramaters sort_by=store" do
+    it "returns all products sorted by store quantity" do
+      product_1 = create :product, store_quantity: 1
+      product_2 = create :product, store_quantity: 2
+      product_3 = create :product, store_quantity: 3, name: "A"
+      product_4 = create :product, store_quantity: 3, name: "B"
+
+      get "/api/v1/products?sort_by=store"
+      products = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(products.count).to eq(4)
+      expect(products.first['id']).to eq(product_3.id)
+      expect(products.second['id']).to eq(product_4.id)
+      expect(products.third['id']).to eq(product_2.id)
+      expect(products.last['id']).to eq(product_1.id)
+    end
+  end
 end
