@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   end
 
   def sale_price
-    dollar_price * total_discount
+    no_active_sale? ? dollar_price : dollar_price * total_discount
   end
 
   class << self
@@ -35,5 +35,9 @@ class Product < ApplicationRecord
 
     def total_discount
       sales.where('status=?', 1).sum(:discount) / 100.0
+    end
+
+    def no_active_sale?
+      total_discount == 0.0
     end
 end

@@ -77,8 +77,8 @@ describe Product, ".sale_price" do
     expect(product.sale_price).to eq(0.50)
   end
 
-  it "returns false if there are no active sales" do
-    product = create :product_with_sale
-    expect(product.sale_price).to eq(0.50)
+  it "returns regular price if there are no active sales" do
+    product = create :product
+    expect(product.sale_price).to eq(product.dollar_price)
   end
 end
