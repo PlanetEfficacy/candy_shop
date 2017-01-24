@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-# I need an easy way to be able to view all of my products.
-# This list of products needs to show me the price, quantity
-# available to ship, and quantity distributed to my Al's
-# Candies™ stores. It would also be nice to be able to sort
-# by those attributes as well.
 describe "GET /products", type: :request do
   it "returns price, quantity of all products" do
     create_list :product, 2
