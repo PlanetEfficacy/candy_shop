@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170124173936) do
     t.integer  "unit_price"
     t.integer  "warehouse_quantity"
     t.integer  "store_quantity"
+    t.datetime "expiration"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

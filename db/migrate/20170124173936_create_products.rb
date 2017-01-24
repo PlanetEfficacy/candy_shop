@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :unit_price
       t.integer :warehouse_quantity
       t.integer :store_quantity
+      t.datetime :expiration
 
       t.timestamps
     end
