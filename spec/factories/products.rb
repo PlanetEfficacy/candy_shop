@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :product do
-    unit_price 1
-    warehouse_quantity 1
-    store_quantity 1
-    expiration 1
+    name "Chocolate Bar"
+    unit_price 100
+    warehouse_quantity 1000
+    store_quantity 100
+    expiration Date.parse(Time.now.to_s)
   end
 end
