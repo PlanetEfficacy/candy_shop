@@ -38,6 +38,16 @@ class Product < ApplicationRecord
     def sort_by_store
       order(store_quantity: :desc, name: :asc)
     end
+
+    def unexpired
+      where('expiration > ?', two_weeks_from_now).or(where(expiration: nil))
+    end
+
+    private
+
+      def two_weeks_from_now
+        Time.now + 14 * 24 * 60 * 60
+      end
   end
 
   private
