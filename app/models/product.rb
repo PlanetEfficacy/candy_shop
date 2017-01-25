@@ -43,6 +43,10 @@ class Product < ApplicationRecord
       where('expiration IS NULL').or(where('expiration > ?', two_weeks_from_now))
     end
 
+    def total_value
+      unexpired.sum('store_quantity + warehouse_quantity * unit_price')
+    end
+
     private
 
       def two_weeks_from_now
