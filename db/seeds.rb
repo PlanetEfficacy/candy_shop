@@ -45,3 +45,11 @@ Product.create(
   store_quantity: 1000,
   expiration: Time.now + (10 * 365 * 24 * 60 * 60)
 )
+puts "Creating expired candy..."
+Product.create(
+  name: "Old candy",
+  unit_price: 300,
+  warehouse_quantity: 100000,
+  store_quantity: 1000,
+  expiration: Time.now - (10 * 365 * 24 * 60 * 60)
+)
