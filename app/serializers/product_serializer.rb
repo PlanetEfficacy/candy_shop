@@ -12,6 +12,7 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def expiration
+    return "" if !object.expiration
     object.expiration.strftime("%Y-%m-%d")
   end
 end

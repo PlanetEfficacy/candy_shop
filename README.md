@@ -1,5 +1,371 @@
 # Candy Store
+## Setup
+### Directions
 
+1. Clone this repository: `git clone https://github.com/PlanetEfficacy/candy_shop`
+2. Install gems: `bundle`
+3. Setup database: `rake db:create`
+4. Migrate database: `rake db:migrate`
+5. Seed database: `rake db:seed`
+6. Run test suite: `rspec`
+7. Run server: `rails s`
+8. Navigate to `localhost:3000/api/v1/...` in your browser
+
+### API Documentation
+
+<table>
+  <tr>
+    <th>HTTP Verb</th>
+    <th>Path</th>
+    <th>Params</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products</td>
+    <td>na</td>
+    <td>Gets all products</td>
+  </tr>
+  <tr>
+    <td>Response</td>
+    <td colspan="3">
+    `[
+    {
+    "id": 1,
+    "name": "Bubble gum",
+    "price": "2.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "",
+    "bogo_sale": false
+  },
+  {
+    "id": 2,
+    "name": "KitKat",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 3,
+    "name": "Snickers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 4,
+    "name": "Marbles",
+    "price": "5.00",
+    "warehouse_quantity": 10000,
+    "store_quantity": 100,
+    "expiration": "",
+    "bogo_sale": false
+  },
+  {
+    "id": 5,
+    "name": "Twizzlers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2027-01-23",
+    "bogo_sale": false
+  }
+]
+    `
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products</td>
+    <td>`?sort_by=price`</td>
+    <td>Gets all products sorted by price</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `[
+  {
+    "id": 4,
+    "name": "Marbles",
+    "price": "5.00",
+    "warehouse_quantity": 10000,
+    "store_quantity": 100,
+    "expiration": "",
+    "bogo_sale": false
+  },
+  {
+    "id": 2,
+    "name": "KitKat",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 3,
+    "name": "Snickers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 5,
+    "name": "Twizzlers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2027-01-23",
+    "bogo_sale": false
+  },
+  {
+    "id": 1,
+    "name": "Bubble gum",
+    "price": "2.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "",
+    "bogo_sale": false
+  }
+]`
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products</td>
+    <td>`?sort_by=warehouse`</td>
+    <td>Gets all products sorted by warehouse quantity</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `[
+  {
+    "id": 1,
+    "name": "Bubble gum",
+    "price": "2.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "",
+    "bogo_sale": false
+  },
+  {
+    "id": 2,
+    "name": "KitKat",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 3,
+    "name": "Snickers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 5,
+    "name": "Twizzlers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2027-01-23",
+    "bogo_sale": false
+  },
+  {
+    "id": 4,
+    "name": "Marbles",
+    "price": "5.00",
+    "warehouse_quantity": 10000,
+    "store_quantity": 100,
+    "expiration": "",
+    "bogo_sale": false
+  }
+]`
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products</td>
+    <td>`?sort_by=store`</td>
+    <td>Gets all products sorted by store quantity</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `[
+  {
+    "id": 1,
+    "name": "Bubble gum",
+    "price": "2.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "",
+    "bogo_sale": false
+  },
+  {
+    "id": 2,
+    "name": "KitKat",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 3,
+    "name": "Snickers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2022-01-24",
+    "bogo_sale": false
+  },
+  {
+    "id": 5,
+    "name": "Twizzlers",
+    "price": "3.00",
+    "warehouse_quantity": 100000,
+    "store_quantity": 1000,
+    "expiration": "2027-01-23",
+    "bogo_sale": false
+  },
+  {
+    "id": 4,
+    "name": "Marbles",
+    "price": "5.00",
+    "warehouse_quantity": 10000,
+    "store_quantity": 100,
+    "expiration": "",
+    "bogo_sale": false
+  }
+]`
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products/total</td>
+    <td>`na`</td>
+    <td>Gets total value of unexpired products in inventory in cents</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "total_value": 116150000
+}`
+    </td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/products/total</td>
+    <td>`?id=1`</td>
+    <td>Gets total value of product with id 1 in inventory in cents</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "total_value": 20200000
+}`
+    </td>
+  </tr>
+  <tr>
+    <td>PATCH</td>
+    <td>http://localhost:3000/api/v1/products/1</td>
+    <td>`{ warehouse_quantity: 200}`</td>
+    <td>Updates the warehouse quantity of a given product</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "id": 1,
+  "name": "Bubble gum",
+  "price": "2.00",
+  "warehouse_quantity": 200,
+  "store_quantity": 1000,
+  "expiration": "",
+  "bogo_sale": false
+}`
+    </td>
+  </tr>
+  <tr>
+    <td>PATCH</td>
+    <td>http://localhost:3000/api/v1/products/1</td>
+    <td>`{ store_quantity: 200}`</td>
+    <td>Updates the store quantity of a given product</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "id": 1,
+  "name": "Bubble gum",
+  "price": "2.00",
+  "warehouse_quantity": 200,
+  "store_quantity": 200,
+  "expiration": "",
+  "bogo_sale": false
+}`
+    </td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>http://localhost:3000/api/v1/sales</td>
+    <td>`{ product: 1, discount: 50 }`</td>
+    <td>Discounts the given products price by a given percent</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "id": 1,
+  "name": "Bubble gum",
+  "price": "1.00",
+  "warehouse_quantity": 200,
+  "store_quantity": 200,
+  "expiration": "",
+  "bogo_sale": false
+}`
+    </td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>http://localhost:3000/api/v1/bogosales</td>
+    <td>`{ product: 1 }`</td>
+    <td>Discounts the given products price by a given percent</td>
+  </tr>
+  <tr>
+  <td>Response</td>
+  <td colspan="3">
+    `{
+  "id": 1,
+  "name": "Bubble gum",
+  "price": "1.00",
+  "warehouse_quantity": 200,
+  "store_quantity": 200,
+  "expiration": "",
+  "bogo_sale": true
+}`
+    </td>
+  </tr>
+</table>
+
+
+
+## Original Assignment
 ### Description
 I would like an Rails API for my candy store Al's Candies™. We're working on putting together an online storefront and taking my business to the next level. That Hersheys character has been on top for far too long. It's my time to shine.
 
