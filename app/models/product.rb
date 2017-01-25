@@ -26,6 +26,10 @@ class Product < ApplicationRecord
     expiration - two_weeks
   end
 
+  def total_value
+    (store_quantity + warehouse_quantity) * unit_price
+  end
+
   class << self
     def sort_by_price
       unexpired.order(unit_price: :desc, name: :asc)
@@ -44,7 +48,7 @@ class Product < ApplicationRecord
     end
 
     def total_value
-      unexpired.sum('store_quantity + warehouse_quantity * unit_price')
+      unexpired.sum('(store_quantity + warehouse_quantity) * unit_price')
     end
 
     private
