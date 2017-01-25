@@ -40,13 +40,13 @@ class Product < ApplicationRecord
     end
 
     def unexpired
-      where('expiration > ?', two_weeks_from_now).or(where(expiration: nil))
+      where('expiration IS NULL').or(where('expiration > ?', two_weeks_from_now))
     end
 
     private
 
       def two_weeks_from_now
-        Time.now + 14 * 24 * 60 * 60
+        Time.zone.now + 14 * 24 * 60 * 60
       end
   end
 

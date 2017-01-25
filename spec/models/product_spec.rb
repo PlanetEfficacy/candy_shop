@@ -102,10 +102,9 @@ end
 
 describe Product, ".unexpired" do
   it "returns all the products whose sell by date has not passed" do
-    expired_product = create :product, expiration: DateTime.new(2017, 1, 24)
-    expiration = Time.now() + 60 * 60 * 24 * 15
-    unexpired_product = create(:product, expiration: expiration)
-    inedible_product = create(:product, expiration: nil)
+    expired_product = create :expired_product
+    unexpired_product = create :product, name: "unexpired product"
+    inedible_product = create :inedible_product
 
     expect(Product.unexpired.count).to eq(2)
     expect(Product.unexpired.first).to eq(unexpired_product)

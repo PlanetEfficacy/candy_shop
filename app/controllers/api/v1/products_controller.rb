@@ -1,6 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
   def index
-    render json: sort_requested? ? order_products : Product.all
+    render json: sort_requested? ? order_products : Product.unexpired
   end
 
   def update

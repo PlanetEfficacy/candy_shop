@@ -75,4 +75,20 @@ describe "GET /api/v1/products", type: :request do
       expect(products.last['id']).to eq(product_1.id)
     end
   end
+
+  context "there are expired products in inventory" do
+    it "returns products that have not expired" do
+      product_1 = create :expired_product, name: "A"
+      product_2 = create :product, name: "B"
+      product_3 = create :product, name: "C"
+
+      get "/api/v1/products"
+      products = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(products.count).to eq(2)
+      expect(products.first['id']).to eq(product_2.id)
+      expect(products.second['id']).to eq(product_3.id)
+    end
+  end
 end
