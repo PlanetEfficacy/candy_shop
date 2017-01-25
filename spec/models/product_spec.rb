@@ -89,7 +89,7 @@ describe Product, ".bogo_sale" do
     product = create :product
     product_with_bogo_sale = create :product_with_bogo_sale
     expect(product.bogo_sale).to eq(false)
-    expect(product_with_bogo_sale.bogo_sale).to eq(true)
+    expect(product_with_bogo_sale .bogo_sale).to eq(true)
   end
 end
 

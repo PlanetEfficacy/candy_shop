@@ -5,7 +5,7 @@ describe "PATCH /api/v1/products/:id", type: :request do
     it "returns the updated product as json" do
       original_product = create :product, warehouse_quantity: 1
 
-      patch "/api/v1/products/#{original_product.id}", { warehouse_quantity: 2 }
+      patch "/api/v1/products/#{original_product.id}", params: { warehouse_quantity: 2 }
       product = JSON.parse(response.body)
 
       expect(response).to be_success
@@ -19,7 +19,7 @@ describe "PATCH /api/v1/products/:id", type: :request do
     it "returns the updated product as json" do
       original_product = create :product, store_quantity: 1
 
-      patch "/api/v1/products/#{original_product.id}", { store_quantity: 2 }
+      patch "/api/v1/products/#{original_product.id}", params: { store_quantity: 2 }
       product = JSON.parse(response.body)
 
       expect(response).to be_success
