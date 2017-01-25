@@ -25,6 +25,7 @@ describe "GET /api/v1/products", type: :request do
       product_2 = create :product, unit_price: 2
       product_3 = create :product, unit_price: 3, name: "A"
       product_4 = create :product, unit_price: 3, name: "B"
+      create :expired_product
 
       get "/api/v1/products?sort_by=price"
       products = JSON.parse(response.body)

@@ -28,7 +28,7 @@ class Product < ApplicationRecord
 
   class << self
     def sort_by_price
-      order(unit_price: :desc, name: :asc)
+      unexpired.order(unit_price: :desc, name: :asc)
     end
 
     def sort_by_warehouse
