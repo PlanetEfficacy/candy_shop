@@ -363,7 +363,21 @@
   </tr>
 </table>
 
+### A note on expired products
 
+Edible products are those with non nil expiration dates. In the seed file, one product is expired: `Old candy`. Note, Old candy will not appear in any of the API responses because of the following scope being applied:
+
+app/models/product.rb
+
+```ruby
+class << self
+  ...
+  def unexpired
+    where('expiration IS NULL').or(where('expiration > ?', two_weeks_from_now))
+  end
+  ...
+end
+```
 
 ## Original Assignment
 ### Description
