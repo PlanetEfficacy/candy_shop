@@ -29,7 +29,7 @@
   <tr>
     <td>Response</td>
     <td colspan="3">
-    `[
+    [
     {
     "id": 1,
     "name": "Bubble gum",
@@ -76,19 +76,19 @@
     "bogo_sale": false
   }
 ]
-    `
+
     </td>
   </tr>
   <tr>
     <td>GET</td>
     <td>http://localhost:3000/api/v1/products</td>
-    <td>`?sort_by=price`</td>
+    <td>?sort_by=price</td>
     <td>Gets all products sorted by price</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `[
+    [
   {
     "id": 4,
     "name": "Marbles",
@@ -140,13 +140,13 @@
   <tr>
     <td>GET</td>
     <td>http://localhost:3000/api/v1/products</td>
-    <td>`?sort_by=warehouse`</td>
+    <td>?sort_by=warehouse</td>
     <td>Gets all products sorted by warehouse quantity</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `[
+    [
   {
     "id": 1,
     "name": "Bubble gum",
@@ -192,19 +192,19 @@
     "expiration": "",
     "bogo_sale": false
   }
-]`
+]
     </td>
   </tr>
   <tr>
     <td>GET</td>
     <td>http://localhost:3000/api/v1/products</td>
-    <td>`?sort_by=store`</td>
+    <td>?sort_by=store</td>
     <td>Gets all products sorted by store quantity</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `[
+    [
   {
     "id": 1,
     "name": "Bubble gum",
@@ -250,47 +250,47 @@
     "expiration": "",
     "bogo_sale": false
   }
-]`
+]
     </td>
   </tr>
   <tr>
     <td>GET</td>
     <td>http://localhost:3000/api/v1/products/total</td>
-    <td>`na`</td>
+    <td>na</td>
     <td>Gets total value of unexpired products in inventory in cents</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "total_value": 116150000
-}`
+}
     </td>
   </tr>
   <tr>
     <td>GET</td>
     <td>http://localhost:3000/api/v1/products/total</td>
-    <td>`?id=1`</td>
+    <td>?id=1</td>
     <td>Gets total value of product with id 1 in inventory in cents</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "total_value": 20200000
-}`
+}
     </td>
   </tr>
   <tr>
     <td>PATCH</td>
     <td>http://localhost:3000/api/v1/products/1</td>
-    <td>`{ warehouse_quantity: 200}`</td>
+    <td>{ warehouse_quantity: 200}</td>
     <td>Updates the warehouse quantity of a given product</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "id": 1,
   "name": "Bubble gum",
   "price": "2.00",
@@ -298,19 +298,19 @@
   "store_quantity": 1000,
   "expiration": "",
   "bogo_sale": false
-}`
+}
     </td>
   </tr>
   <tr>
     <td>PATCH</td>
     <td>http://localhost:3000/api/v1/products/1</td>
-    <td>`{ store_quantity: 200}`</td>
+    <td>{ store_quantity: 200}</td>
     <td>Updates the store quantity of a given product</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "id": 1,
   "name": "Bubble gum",
   "price": "2.00",
@@ -318,19 +318,19 @@
   "store_quantity": 200,
   "expiration": "",
   "bogo_sale": false
-}`
+}
     </td>
   </tr>
   <tr>
     <td>POST</td>
     <td>http://localhost:3000/api/v1/sales</td>
-    <td>`{ product: 1, discount: 50 }`</td>
+    <td>{ product: 1, discount: 50 }</td>
     <td>Discounts the given products price by a given percent</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "id": 1,
   "name": "Bubble gum",
   "price": "1.00",
@@ -338,19 +338,19 @@
   "store_quantity": 200,
   "expiration": "",
   "bogo_sale": false
-}`
+}
     </td>
   </tr>
   <tr>
     <td>POST</td>
     <td>http://localhost:3000/api/v1/bogosales</td>
-    <td>`{ product: 1 }`</td>
+    <td>{ product: 1 }</td>
     <td>Discounts the given products price by a given percent</td>
   </tr>
   <tr>
   <td>Response</td>
   <td colspan="3">
-    `{
+    {
   "id": 1,
   "name": "Bubble gum",
   "price": "1.00",
@@ -358,7 +358,7 @@
   "store_quantity": 200,
   "expiration": "",
   "bogo_sale": true
-}`
+}
     </td>
   </tr>
 </table>
