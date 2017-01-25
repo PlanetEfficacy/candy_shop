@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       resources :products, only: [:index, :update]
       resources :sales, only: [:create]
       resources :bogo, only: [:create]
-
       namespace :products do
         get 'total', to: 'total#index'
       end
