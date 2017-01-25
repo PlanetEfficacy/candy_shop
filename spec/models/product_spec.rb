@@ -111,3 +111,13 @@ describe Product, ".unexpired" do
     expect(Product.unexpired.last).to eq(inedible_product)
   end
 end
+
+describe Product, ".total_value" do
+  it "returns the value of all products in inventory" do
+    expired_product = create :expired_product
+    unexpired_product = create :product, name: "unexpired product"
+    inedible_product = create :inedible_product
+
+    expect(Product.total_value).to eq(220000)
+  end
+end
