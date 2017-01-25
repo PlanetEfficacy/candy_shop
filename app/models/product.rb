@@ -32,7 +32,7 @@ class Product < ApplicationRecord
     end
 
     def sort_by_warehouse
-      order(warehouse_quantity: :desc, name: :asc)
+      unexpired.order(warehouse_quantity: :desc, name: :asc)
     end
 
     def sort_by_store
